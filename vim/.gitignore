@@ -1,0 +1,8 @@
+# Generated view files
+view/*
+
+# Netrw plugin history file
+.netrwhist
+
+# Installed plugins (:PlugInstall will install these for you)
+plugged

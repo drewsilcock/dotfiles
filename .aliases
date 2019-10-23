@@ -1,0 +1,71 @@
+#
+# ~/.aliases
+#
+
+# Directory traversal/manipulation
+alias la='ls -AFv'
+alias ll='ls -lhFv'
+alias files='du -ha | sort -h'
+alias fs=files
+alias sl=ls
+alias sls=ls
+alias ..='cd ../'
+alias '....'='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias mkdir='mkdir -pv'
+alias s='ls'
+
+# Networking
+alias ping3='ping -c 3'
+alias poog='ping -c 3 www.google.com'
+alias troog='traceroute www.google.com'
+alias ports='netstat -tulanp'
+
+# Quiet
+alias bc='bc -q'
+alias root='root -l'
+
+# Configuration editing
+alias zalias='gvim ~/.zsh_aliases'
+alias zshrc='gvim ~/.zshrc'
+alias zource='source ~/.zshrc'
+
+# Vim
+alias svim='sudo vim -c "set bg=dark"'
+alias sgvim='kdesudo gvim &> /dev/null || sudo gvim'
+
+# Git
+alias 'git statis'='git status'
+alias gits='git status'
+alias diff=colordiff
+alias gu=git up
+alias ga='git add --all :/'
+alias ga.='git add --all .'
+alias glp='git log --pretty=oneline'
+alias gl='git log'
+
+# zshmarks
+alias b=bookmark
+alias j=jump
+alias sm=showmarks
+
+# Pyenv
+alias 'pyenv list'='pyenv versions'
+alias 'pyenv version'='pyenv versions'
+
+# debian package aliases this elsewhere
+alias as=/usr/bin/as
+alias gs=gits
+
+# Misc
+alias pdfcombine='\gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
+alias clean='cleanbackups; cleanswp'
+alias timeof='exiftool -DateTimeOriginal -ProfileDateTime'
+alias ccat='pygmentize -g -O style=colorful,linenos=1'
+
+alias 'pyenv list'='pyenv versions'
+
+# macOS only - open file in preview
+alias preview='qlmanage -p'

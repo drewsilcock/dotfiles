@@ -1,0 +1,25 @@
+[user]
+	name = Drew Silcock
+	email = drew.silcock@stfc.ac.uk
+	signingkey = B445BCFA63263720
+[core]
+	editor = mvim -f
+[alias]
+	up = pull --rebase --autostash
+	graph = log --graph --date=relative --branches --all
+	short-graph = log --graph --oneline --date=relative --branches --all
+[commit]
+	gpgsign = true
+[diff]
+	tool = bc3
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	trustExitCode = true
+[gpg]
+	program = /usr/local/bin/gpg
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
