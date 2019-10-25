@@ -46,6 +46,9 @@ alias ga.='git add --all .'
 alias glp='git log --pretty=oneline'
 alias gl='git log'
 
+# Let there be colour
+alias grep="grep --color=auto"
+
 # zshmarks
 alias b=bookmark
 alias j=jump
