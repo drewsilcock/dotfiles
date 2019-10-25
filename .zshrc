@@ -78,7 +78,12 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-alias ls="gls --color=auto"
+if hash gls 2> /dev/null
+then
+  alias ls="gls --color=auto"
+else
+  alias ls="ls --color=auto"
+fi
 
 LS_COLORS='\
 no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd=33;44:cd=37;44:or=05;37;41:mi=05;37;41:\
@@ -183,8 +188,8 @@ fpath+=~/.zfunc
 
 test -e "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" && \
   source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+test -e "$HOME/.profile" && source "$HOME/.profile"
 source "$HOME/.aliases"
-source "$HOME/.profile"
 
 # Function to display external IP address
 ext-ip() { curl http://ipecho.net/plain; echo }
@@ -214,7 +219,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # Bash completion for IBM Cloud API
-source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
+test -e /usr/local/ibmcloud/autocomplete/zsh_autocomplete && \
+  source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
 
 if [[ "$OSTYPE" == "darwin"* ]]
 then
