@@ -71,4 +71,9 @@ alias ccat='pygmentize -g -O style=colorful,linenos=1'
 alias 'pyenv list'='pyenv versions'
 
 # macOS only - open file in preview
-alias preview='qlmanage -p'
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    preview() {
+        qlmanage -p "$@" 2> /dev/null
+    }
+fi
