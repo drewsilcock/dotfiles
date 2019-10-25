@@ -66,8 +66,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 " show indent level
 Plug 'yggdroot/indentline'
-let g:indentLine_setColors = 0
-let g:indentLine_char = '┊'
+let g:indentLine_char = '▏'
 " Highlight whitespace
 Plug 'ntpeters/vim-better-whitespace'
 " quickly align things
@@ -78,7 +77,6 @@ Plug 'plasticboy/vim-markdown'
 " Markdown plugin is great but folding is awful.
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
-set conceallevel=0
 
 " autocomplete quotes, parenthesis, brackets, etc.
 Plug 'cohama/lexima.vim'
@@ -241,3 +239,6 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" If I wanted things concealing, I wouldn't be using vim.
+set conceallevel=0
