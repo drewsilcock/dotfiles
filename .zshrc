@@ -30,7 +30,15 @@ zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "Cyan4973/xxHash", hook-build:"PREFIX=$ZPLUG_HOME make install"
 zplug "so-fancy/diff-so-fancy", as:command, use:"third_party/build_fatpack/diff-so-fancy"
 zplug "denilsonsa/prettyping", as:command, use:"prettyping"
-zplug "dbrgn/tealdeer", as:command, from:gh-r, use:"*x86_64*", rename-to:tldr
+
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+  echo "Unable to install 'bat' from 'github.com/sharkdp/bat'. Please install manually with cargo."
+  echo "Unable to install 'tldr' from 'github.com/dbrgn/tealdeer'. Please install manually with cargo or Homebrew."
+else
+  zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux-gnu*"
+  zplug "dbrgn/tealdeer", as:command, from:gh-r, use:"*x86_64*", rename-to:tldr
+fi
 
 
 # Install plugins that are not installed
