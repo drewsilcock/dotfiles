@@ -151,10 +151,6 @@ if type cargo >/dev/null 2>&1; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    PROMPT="%{$fg_bold[red]%}(%M) ${PROMPT}"
-fi
-
 # Machine specific
 if [ -f ~/.zsh_machine ]; then
     . ~/.zsh_machine
