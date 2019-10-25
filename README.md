@@ -7,9 +7,10 @@ These are Drew's personal dotfiles - feel free to use them or take inspiration f
 Note that the repository contains submodules so must be cloned recursively.
 
 ```sh
-$ git clone --recursive git@github.com:drewsilcock/dotfiles.git ~/.dotfiles
-$ cd ~/.dotfiles
-$ ./install.sh
+git clone --recursive  https://github.com/drewsilcock/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh
+cd -
 ```
 
 **⚠️  WARNING! ⚠️**- This will overwrite existing config files without saving them. *Use at your own risk!*
