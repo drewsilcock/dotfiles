@@ -3,8 +3,9 @@
 #
 
 # Directory traversal/manipulation
-alias la='ls -AFv'
-alias ll='ls -lhFv'
+alias la='ls -aF'
+alias lal='ls -laF'
+alias ll='ls -lF'
 alias files='du -ha | sort -h'
 alias fs=files
 alias sl=ls
@@ -16,6 +17,9 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 alias mkdir='mkdir -pv'
 alias s='ls'
+
+# If not installed do 'brew install exa' or 'cargo install exa'.
+hash exa 2> /dev/null && alias ls='exa --git -F'
 
 # Networking
 alias ping3='ping -c 3'
