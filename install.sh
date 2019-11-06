@@ -21,6 +21,7 @@ create_symlink tmux/.tmux.conf .tmux.conf
 create_symlink .vimrc
 rm -rf ~/.vim && create_symlink vim .vim
 create_symlink .zshrc
+test -e .zsh_machine && create_symlink .zsh_machine
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
     create_symlink .iterm2_shell_integration.zsh
