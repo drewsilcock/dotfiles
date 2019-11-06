@@ -27,17 +27,15 @@ zplug "lib/key-bindings", from:oh-my-zsh
 # scripts
 zplug "trapd00r/ls--", as:command, use:"ls++", if:"type perl > /dev/null", hook-build:"cp ~/.zplug/repos/trapd00r/ls--/ls++.conf ~/.ls++.conf"
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
-zplug "Cyan4973/xxHash", hook-build:"PREFIX=$ZPLUG_HOME make install"
 zplug "so-fancy/diff-so-fancy", as:command, use:"third_party/build_fatpack/diff-so-fancy"
 zplug "denilsonsa/prettyping", as:command, use:"prettyping"
 
-if [[ "$OSTYPE" == "darwin"* ]]
+if [[ "$OSTYPE" == "linux-gnu" ]]
 then
-  echo "Unable to install 'bat' from 'github.com/sharkdp/bat'. Please install manually with cargo."
-  echo "Unable to install 'tldr' from 'github.com/dbrgn/tealdeer'. Please install manually with cargo or Homebrew."
-else
+  # These from GitHub releases only have Linux releases.
   zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux-gnu*"
   zplug "dbrgn/tealdeer", as:command, from:gh-r, use:"*x86_64*", rename-to:tldr
+else
 fi
 
 
