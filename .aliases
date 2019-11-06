@@ -66,6 +66,10 @@ alias 'pyenv version'='pyenv versions'
 alias as=/usr/bin/as
 alias gs=gits
 
+# Politeness is very important
+alias please="sudo"
+alias pls="sudo"
+
 # Misc
 alias pdfcombine='\gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
 alias clean='cleanbackups; cleanswp'
