@@ -33,8 +33,32 @@ zplug "denilsonsa/prettyping", as:command, use:"prettyping"
 if [[ "$OSTYPE" == "linux-gnu" ]]
 then
   # These from GitHub releases only have Linux releases.
-  zplug "sharkdp/bat", as:command, from:gh-r, use:"*x86_64*linux-gnu*"
-  zplug "dbrgn/tealdeer", as:command, from:gh-r, use:"*x86_64*", rename-to:tldr
+  if ! command -v bat >/dev/null 2>&1
+  then
+    zplug "sharkdp/bat", \
+      as:command, \
+      from:gh-r, \
+      use:"*x86_64*linux-gnu*", \
+      rename-to:bat
+  fi
+
+  if ! command -v tldr >/dev/null 2>&1
+  then
+    zplug "dbrgn/tealdeer", \
+      as:command, \
+      from:gh-r, \
+      use:"*x86_64*", \
+      rename-to:tldr
+  fi
+
+  if ! command -v exa >/dev/null 2>&1
+  then
+    zplug "ogham/exa", \
+      as:command, \
+      from:gh-r, \
+      use:"*linux*", \
+      rename-to:exa
+  fi
 else
 fi
 
