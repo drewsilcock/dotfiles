@@ -61,7 +61,7 @@ Plug 'ron-rs/ron.vim'
 " show VCS diff in gutter
 Plug 'mhinz/vim-signify'
 " quickly change surroundings - (), '', etc
-Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-surround'
 " quickly comment out stuff
 Plug 'tpope/vim-commentary'
 " show indent level
