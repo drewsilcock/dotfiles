@@ -42,6 +42,24 @@ then
       rename-to:bat
   fi
 
+  if ! command -v fd >/dev/null 2>&1
+  then
+    zplug "sharkdp/fd", \
+      as:command, \
+      from:gh-r, \
+      use:"*x86_64*linux-gnu*", \
+      rename-to:fd
+  fi
+
+  if ! command -v hexyl >/dev/null 2>&1
+  then
+    zplug "sharkdp/hexyl", \
+      as:command, \
+      from:gh-r, \
+      use:"*x86_64*linux-gnu*", \
+      rename-to:hexyl
+  fi
+
   if ! command -v tldr >/dev/null 2>&1
   then
     zplug "dbrgn/tealdeer", \
