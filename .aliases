@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #
 # ~/.aliases
 #
@@ -44,6 +46,7 @@ alias sgvim='kdesudo gvim &> /dev/null || sudo gvim'
 alias 'git statis'='git status'
 alias gits='git status'
 alias diff=colordiff
+alias gd='git diff'
 alias gu=git up
 alias ga='git add --all :/'
 alias ga.='git add --all .'
@@ -81,7 +84,11 @@ alias 'pyenv list'='pyenv versions'
 # macOS only - open file in preview
 if [[ "$OSTYPE" == "darwin"* ]]
 then
-    preview() {
+    mpreview() {
         qlmanage -p "$@" 2> /dev/null
     }
 fi
+
+alias ic='ibmcloud'
+
+alias 'wacom-restart'='gtimeout 3s /Applications/Wacom\ Tablet.localized/.Tablet/WacomTabletDriver.app/Contents/MacOS/WacomTabletDriver &'
