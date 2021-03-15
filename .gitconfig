@@ -4,6 +4,7 @@
 	signingkey = B445BCFA63263720
 [core]
 	editor = mvim -f
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
 	up = pull --rebase --autostash
 	graph = log --graph --date=relative --branches --all
@@ -23,3 +24,19 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	first-run = false
