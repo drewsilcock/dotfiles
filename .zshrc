@@ -2,7 +2,7 @@
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug && \
         source ~/.zplug/init.zsh && \
-        zplug update
+        zplug update --verbose
 else
     source ~/.zplug/init.zsh
 fi
@@ -84,7 +84,7 @@ fi
 
 # Install plugins that are not installed
 if ! zplug check --verbose; then
-     zplug install
+     zplug install --verbose
 fi
 
 # Then, source plugins and add commands to $PATH
