@@ -30,9 +30,6 @@ echo "[1/2] Done."
 
 echo "[2/2] Setting up vim and plugins..."
 vim +PlugInstall +qall
-cd vim/plugged/YouCompleteMe
-./install.py --all
-cd -
 echo "[2/2] Done."
 
 echo

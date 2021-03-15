@@ -31,7 +31,7 @@ Plug 'tpope/vim-sleuth'
 " Sublime-esque multi cursors
 Plug 'terryma/vim-multiple-cursors'
 " Autocomplete for code
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
 " Airline (like Powerline but lighter weight)
 Plug 'vim-airline/vim-airline'
 " With themes
@@ -79,7 +79,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
 " autocomplete quotes, parenthesis, brackets, etc.
-Plug 'cohama/lexima.vim'
+"Plug 'cohama/lexima.vim'
 "let g:lexima_enable_newline_rules = 1
 
 " close files and keep layouts
