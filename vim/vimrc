@@ -77,6 +77,9 @@ Plug 'plasticboy/vim-markdown'
 " Markdown plugin is great but folding is awful.
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
 
 " autocomplete quotes, parenthesis, brackets, etc.
 "Plug 'cohama/lexima.vim'
@@ -162,13 +165,11 @@ nnoremap <c-N> :vnew<CR>
 
 " multi cursor
 let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_next_key='<C-d>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-" Map start key separately from next key
 let g:multi_cursor_start_key='<c-d>'
+let g:multi_cursor_next_key='<c-j>'
+let g:multi_cursor_prev_key='<c-k>'
+let g:multi_cursor_skip_key='<c-l>'
+let g:multi_cursor_quit_key='<Esc>'
 
 " next and prev buffer
 set hidden
