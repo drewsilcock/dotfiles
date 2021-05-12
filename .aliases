@@ -21,7 +21,7 @@ alias mkdir='mkdir -pv'
 alias s='ls'
 
 # If not installed do 'brew install exa' or 'cargo install exa'.
-hash exa 2> /dev/null && alias ls='exa --git -F'
+hash exa 2> /dev/null && alias ls='exa --git -F --icons'
 
 # Networking
 alias ping3='ping -c 3'
