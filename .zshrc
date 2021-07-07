@@ -29,7 +29,10 @@ zplug "trapd00r/ls--", as:command, use:"ls++", if:"type perl > /dev/null", hook-
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "so-fancy/diff-so-fancy", as:command, use:"third_party/build_fatpack/diff-so-fancy"
 zplug "denilsonsa/prettyping", as:command, use:"prettyping"
-zplug "zdharma/zsh-diff-so-fancy", as:command, use:"bin/"
+
+# Recommended installs:
+#
+# https://github.com/dandavison/delta
 
 if [[ "$OSTYPE" == "linux-gnu" ]]
 then
@@ -84,7 +87,7 @@ fi
 
 # Install plugins that are not installed
 if ! zplug check --verbose; then
-     zplug install --verbose
+     zplug install
 fi
 
 # Then, source plugins and add commands to $PATH
@@ -172,6 +175,8 @@ fi
 if type cargo >/dev/null 2>&1; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
+
+export PATH="${HOME}/bin:${PATH}"
 
 # Machine specific
 if [ -f ~/.zsh_machine ]; then
