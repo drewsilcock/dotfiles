@@ -33,14 +33,9 @@ alias ports='netstat -tulanp'
 alias bc='bc -q'
 alias root='root -l'
 
-# Configuration editing
-alias zalias='gvim ~/.zsh_aliases'
-alias zshrc='gvim ~/.zshrc'
-alias zource='source ~/.zshrc'
-
 # Vim
+hash nvim 2> /dev/null && alias vim='nvim'
 alias svim='sudo vim -c "set bg=dark"'
-alias sgvim='kdesudo gvim &> /dev/null || sudo gvim'
 
 # Git
 alias 'git statis'='git status'
