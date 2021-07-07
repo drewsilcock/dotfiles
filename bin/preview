@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Use fzf with clever previewer (either bat or hexyl).
+#
+# Dependencies:
+# - dat tool written by Drew available in "Bin" under
+#   https://github.com/drewsilcock/dotfiles.
+# - isutf8 from `moreutils` package (install with e.g. `brew install
+#   moreutils`, `apt install moreutils`).
+# - bat from https://github.com/sharkdp/bat (install instructions in GitHub
+#   README).
+# - hexyl from https://github.com/sharkdp/hexyl (install instructions in
+#   GitHub README).
+# - fzf
+# - Neovim
+#
+# @author Drew Silcock (https://github.com/drewsilcock)
+# @licence MIT
+
+if [[ ! -z "$1" ]]; then
+    if [[ -d "$1" ]]; then
+        cd "$1"
+    else
+        >&2 echo "$1: No such file or directory"
+        exit 1
+    fi
+fi
+
+fname=$(fd -E "go" -E .git --type f --hidden | \fzf --border --height 100% --preview "DAT_BAT_OPTIONS='--pager=never --color=always --style=changes,rule,numbers,snip' dat {}")
+
+[ -z "$1" ] || cd -
+
+[ -z "$fname" ] || nvim "$fname"

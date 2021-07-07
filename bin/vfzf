@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# @author Drew Silcock (https://github.com/drewsilcock)
+# @licence MIT
+
+fname=$(fzf)
+
+[ -z "$fname" ] || nvim "$fname"

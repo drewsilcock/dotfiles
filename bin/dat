@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Checks whether file is UTF-8 encoded, and directs to either 'bat' or 'hexyl'
+# tool as appropriate.
+#
+# Dependencies:
+# - `isutf8` from `moreutils` package (install with e.g. `brew install
+#   moreutils`, `apt install moreutils`).
+# - `bat` from https://github.com/sharkdp/bat (install instructions in GitHub
+#   README).
+# - `hexyl` from https://github.com/sharkdp/hexyl (install instructions in
+#   GitHub README)
+#
+# @author Drew Silcock (https://github.com/drewsilcock)
+# @licence MIT
+
+if [[ -z "$1" ]]; then
+    bat
+    exit
+fi
+
+if isutf8 -q "$1"; then
+    bat $DAT_BAT_OPTIONS "$1"
+else
+    hexyl $DAT_HEXYL_OPTIONS "$1" | less -F -S -R -M -i
+fi
