@@ -206,8 +206,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " Enable mouse for all things
 set mouse=a
 
-" Fix Shift-Left / Shift-Right keys in vim in tmux
-set term=xterm-256color
+if !has('nvim')
+  set term=xterm-256color
+endif
 
 nnoremap <C-g> :YcmCompleter GoTo<CR>
 inoremap <C-g> :YcmCompleter GoTo<CR>
