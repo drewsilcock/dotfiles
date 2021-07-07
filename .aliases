@@ -23,6 +23,8 @@ alias s='ls'
 # If not installed do 'brew install exa' or 'cargo install exa'.
 hash exa 2> /dev/null && alias ls='exa --git -F --icons'
 
+alias fzf='fzf --layout=reverse --height=40% --border'
+
 # Networking
 alias ping3='ping -c 3'
 alias poog='ping -c 3 www.google.com'
