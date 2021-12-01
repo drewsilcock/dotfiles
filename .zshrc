@@ -154,11 +154,6 @@ if [[ -a $HOME/.dircolors ]]; then
     eval $(dircolors -b $HOME/.dircolors)
 fi
 
-# most instead of less
-if type most >/dev/null 2>&1; then
-    export MANPAGER="most -s"
-fi
-
 # Go
 if type go >/dev/null 2>&1; then
     export GOPATH=~/go
@@ -260,3 +255,5 @@ fi
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
