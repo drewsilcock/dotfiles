@@ -15,6 +15,7 @@
 	tool = bc3
 [merge]
 	tool = bc3
+	ff = no
 [mergetool "bc3"]
 	trustExitCode = true
 [gpg]
@@ -46,3 +47,7 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
