@@ -20,6 +20,8 @@ create_symlink .tmux.conf.local
 create_symlink tmux/.tmux.conf .tmux.conf
 create_symlink .vimrc
 rm -rf ~/.vim && create_symlink vim .vim
+mv ~/.config/fish ~/.config/fish_backup && create_symlink fish .config/fish
+mv ~/.config/nvie ~/.config/nvim_backup && create_symlink nvim .config/nvim
 create_symlink .zshrc
 
 mkdir -p ~/bin
