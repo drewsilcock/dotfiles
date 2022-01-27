@@ -24,3 +24,31 @@ cd -
 
 - If a config file is already present, prompt user for action instead of overwriting (i.e. [o]verwrite, [b]ackup, [s]kip, [q]uit).
 - Add option to script to always force overwrite (i.e. -f flag).
+
+Extra things to install:
+
+- Fish
+- Starship
+- Neovim
+- Exa
+- Bat
+- Fzf
+- Hexyl
+- VS Code
+- MacDown (`brew install --cask macdown`)
+- TablePlus
+- Bear
+- Write
+- Sublime Text
+- Sublime Merge
+- Goland
+- CLion
+- IDEA
+- Slack
+- GIMP
+- Docker (Desktop? Minikube? Podman?)
+- tmux
+- ripgrep
+- delta
+- poetry
+- task
