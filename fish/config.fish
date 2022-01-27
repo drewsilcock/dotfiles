@@ -38,5 +38,9 @@ if test -d "$HOME/Bin"
   set PATH "$HOME/Bin" $PATH
 end
 
+if test -d "$HOME/.local/bin"
+  set PATH "$HOME/.local/bin" $PATH
+end
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
