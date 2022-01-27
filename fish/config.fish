@@ -1,6 +1,8 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    pyenv init --path | source
+    if type -q pyenv
+      pyenv init --path | source
+    end
 end
 
 starship init fish | source
@@ -14,11 +16,11 @@ alias fzf='fzf --layout=reverse --height=40% --border'
 alias wacom-restart='launchctl unload /Library/LaunchAgents/com.wacom.* && launchctl load /Library/LaunchAgents/com.wacom.*'
 alias ktl=kubectl
 
-if test -e bat
+if type -q bat
   alias preview="fd -E 'go' -E .git --type f | fzf --preview 'bat --plain --color=always {}'"
 end
 
-if test -e fd
+if type -q fd
   set -gx FZF_DEFAULT_COMMAND "fd --type f --exclude .git"
 end
 
@@ -44,3 +46,4 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+true
