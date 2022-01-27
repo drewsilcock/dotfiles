@@ -1,12 +1,26 @@
 function fish_greeting
 
+  if type -q ip
+    set ip_addr (ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+  else if type -q ipconfig
+    set ip_addr (ipconfig getifaddr en0)
+  else
+    set ip_addr "Unknown"
+  end
+
+  if type -q pmset
+    set battery (pmset -g batt | grep -Eo "\d+%")
+  else
+    set battery "N/A"
+  end
+
   echo '                 '(set_color F00)'___
   ___======____='(set_color FF7F00)'-'(set_color FF0)'-'(set_color FF7F00)'-='(set_color F00)')
 /T            \_'(set_color FF0)'--='(set_color FF7F00)'=='(set_color F00)')    '(set_color red)(whoami)'@'(hostname)'
 [ \ '(set_color FF7F00)'('(set_color FF0)'0'(set_color FF7F00)')   '(set_color F00)'\~    \_'(set_color FF0)'-='(set_color FF7F00)'='(set_color F00)')'(set_color yellow)'    Uptime: '(set_color white)(uptime | sed 's/.*up \([^,]*\), .*/\1/')(set_color red)'
- \      / )J'(set_color FF7F00)'~~    \\'(set_color FF0)'-='(set_color F00)')    '(set_color yellow)'IP Address: '(set_color white)(ipconfig getifaddr en0)(set_color red)'
+ \      / )J'(set_color FF7F00)'~~    \\'(set_color FF0)'-='(set_color F00)')    '(set_color yellow)'IP Address: '(set_color white)$ip_addr(set_color red)'
   \\\\___/  )JJ'(set_color FF7F00)'~'(set_color FF0)'~~   '(set_color F00)'\)     '(set_color yellow)'Date: '(set_color white)(date)(set_color red)'
-   \_____/JJJ'(set_color FF7F00)'~~'(set_color FF0)'~~    '(set_color F00)'\\    '(set_color yellow)'Battery: '(set_color white)(pmset -g batt | grep -Eo "\d+%")(set_color red)'
+   \_____/JJJ'(set_color FF7F00)'~~'(set_color FF0)'~~    '(set_color F00)'\\    '(set_color yellow)'Battery: '(set_color white)$battery(set_color red)'
    '(set_color FF7F00)'/ '(set_color FF0)'\  '(set_color FF0)', \\'(set_color F00)'J'(set_color FF7F00)'~~~'(set_color FF0)'~~     '(set_color FF7F00)'\\
   (-'(set_color FF0)'\)'(set_color F00)'\='(set_color FF7F00)'|'(set_color FF0)'\\\\\\'(set_color FF7F00)'~~'(set_color FF0)'~~       '(set_color FF7F00)'L_'(set_color FF0)'_
   '(set_color FF7F00)'('(set_color F00)'\\'(set_color FF7F00)'\\)  ('(set_color FF0)'\\'(set_color FF7F00)'\\\)'(set_color F00)'_           '(set_color FF0)'\=='(set_color FF7F00)'__
