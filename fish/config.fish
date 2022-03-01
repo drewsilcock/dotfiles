@@ -48,6 +48,10 @@ if test -d "$HOME/.local/bin"
   set PATH "$HOME/.local/bin" $PATH
 end
 
+if test -e "/home/linuxbrew/.linuxbrew/bin/brew"
+  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+end
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 true
