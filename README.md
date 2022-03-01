@@ -15,11 +15,6 @@ cd -
 
 **⚠️  WARNING! ⚠️**- This will overwrite existing config files without saving them. *Use at your own risk!*
 
-## Requirements
-
-- Vim
-- Python >= 2.7.1 or >= 3.5.1
-
 ## Todo
 
 - If a config file is already present, prompt user for action instead of overwriting (i.e. [o]verwrite, [b]ackup, [s]kip, [q]uit).
