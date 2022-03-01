@@ -65,7 +65,7 @@ brew install \
     hexyl \
     tmux \
     ripgrep \
-    delta \
+    git-delta \
     go-task/tap/go-task \
     tealdeer
 
