@@ -53,7 +53,8 @@ brew install \
     tmux \
     ripgrep \
     delta \
-    go-task/tap/go-task
+    go-task/tap/go-task \
+    tealdeer
 
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 echo "[2/3] Done."
