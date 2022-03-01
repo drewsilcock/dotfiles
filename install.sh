@@ -11,7 +11,7 @@ create_symlink() {
     fi
 }
 
-echo "[1/2] Creating configuration symlinks..."
+echo "[1/3] Creating configuration symlinks..."
 create_symlink .aliases
 create_symlink .gdbinit
 create_symlink .gitconfig
@@ -36,11 +36,31 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
     create_symlink .iterm2_shell_integration.zsh
 fi
-echo "[1/2] Done."
+echo "[1/3] Done."
 
-echo "[2/2] Setting up vim and plugins..."
-vim +PlugInstall +qall
-echo "[2/2] Done."
+echo "[2/3] Installing tools..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install \
+    fish \
+    neovim \
+    exa \
+    starship \
+    jq \
+    bat \
+    fzf \
+    hexyl \
+    tmux \
+    ripgrep \
+    delta \
+    go-task/tap/go-task
+
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+echo "[2/3] Done."
+
+echo "[3/3] Setting up neovim..."
+nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+echo "[3/3] Done."
 
 echo
-echo "Finished installing dotfiles. You may need to restart your shell for changes to take effect."
+echo "Finished installing dotfiles. Please restart your shell for changes to take effect."
