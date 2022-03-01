@@ -24,6 +24,10 @@ if type -q fd
   set -gx FZF_DEFAULT_COMMAND "fd --type f --exclude .git"
 end
 
+if type -q minikube
+  minikube -p minikube docker-env | source
+end
+
 if test -e /usr/libexec/java_home
   set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
 end
