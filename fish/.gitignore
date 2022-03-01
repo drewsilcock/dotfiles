@@ -1,2 +1,11 @@
+## General note - it would be good if there was a "custom" folder where we could put custom
+## variables & functions that we want to be tracked in git, whereas the ones installed by
+## Fisher we want to ignore.
+
 # These are very machine-specific.
 fish_variables
+
+# These rely on specific commands being installed - if you
+# want them, just install them with Fisher.
+functions/fzf_key_bindings.fish
+functions/aws.fish
