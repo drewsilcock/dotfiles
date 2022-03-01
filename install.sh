@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eou pipefail
+
 create_symlink() {
     echo "... $1"
 
@@ -19,11 +21,14 @@ create_symlink .gvimrc
 create_symlink .tmux.conf.local
 create_symlink tmux/.tmux.conf .tmux.conf
 create_symlink .vimrc
+create_symlink .zshrc
+
 rm -rf ~/.vim && create_symlink vim .vim
 mkdir -p ~/.config
-mv ~/.config/fish ~/.config/fish_backup; create_symlink fish .config/fish
-mv ~/.config/nvim ~/.config/nvim_backup; create_symlink nvim .config/nvim
-create_symlink .zshrc
+mv ~/.config/fish ~/.config/fish_backup 2> /dev/null
+create_symlink fish .config/fish
+mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null
+create_symlink nvim .config/nvim
 
 mkdir -p ~/bin
 for file_path in $(\ls ./bin/*); do
