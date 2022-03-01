@@ -68,6 +68,8 @@ brew install \
     git-delta \
     go-task/tap/go-task \
     tealdeer
+    
+$(brew --prefix)/opt/fzf/install
 
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 echo "[2/3] Done."
