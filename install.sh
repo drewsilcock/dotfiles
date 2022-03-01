@@ -39,7 +39,15 @@ fi
 echo "[1/3] Done."
 
 echo "[2/3] Installing tools..."
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Homebrew post-installation steps.
+if test -q /home/linuxbrew/.linuxbrew/bin/brew; then
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.profile
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+test -q apt-get && sudo apt-get install build-essential
 
 brew install \
     fish \
