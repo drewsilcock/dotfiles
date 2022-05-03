@@ -109,3 +109,13 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ### Golang
 
 Link: https://go.dev/doc/install
+
+### Ubuntu Mono Nerd Font
+
+https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf
+
+### iTerm2
+
+https://iterm2.com/
+
+Import profile `iterm2-profile.json`.
