@@ -119,3 +119,7 @@ https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Reg
 https://iterm2.com/
 
 Import profile `iterm2-profile.json`.
+
+### Rectangle
+
+https://rectangleapp.com/
