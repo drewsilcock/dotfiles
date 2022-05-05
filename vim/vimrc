@@ -118,7 +118,7 @@ endif
 syntax on
 set background=dark
 let g:one_allow_italics = 1 " I love italic for comments
-colorscheme solarized8
+"colorscheme solarized8
 
 " encoding
 set encoding=utf-8

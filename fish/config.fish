@@ -12,6 +12,7 @@ alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
 alias ls='exa --git -F --icons'
+alias la='exa --git -F --icons -la'
 alias fzf='fzf --layout=reverse --height=40% --border'
 alias wacom-restart='launchctl unload /Library/LaunchAgents/com.wacom.* && launchctl load /Library/LaunchAgents/com.wacom.*'
 alias ktl=kubectl
@@ -40,16 +41,14 @@ if test -d "$HOME/Library/Python/3.8"
   set PATH "$HOME/Library/Python/3.8/bin" $PATH
 end
 
-if test -d "$HOME/Bin"
-  set PATH "$HOME/Bin" $PATH
-end
-
 if test -d "$HOME/.local/bin"
   set PATH "$HOME/.local/bin" $PATH
 end
 
 if test -e "/home/linuxbrew/.linuxbrew/bin/brew"
   eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+else if test -e "/opt/homebrew/bin/brew"
+  eval (/opt/homebrew/bin/brew shellenv)
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

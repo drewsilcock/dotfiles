@@ -171,7 +171,7 @@ if type cargo >/dev/null 2>&1; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-export PATH="${HOME}/bin:${PATH}"
+export PATH="${HOME}/.local/bin:/opt/homebrew/bin:${PATH}"
 
 # Machine specific
 if [ -f ~/.zsh_machine ]; then
@@ -224,7 +224,7 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 elif [[ "$OSTYPE" == "darwin"* ]]
 then
-  export EDITOR='mvim'
+  export EDITOR='vim'
 else
   export EDITOR="gvim"
 fi
@@ -246,9 +246,6 @@ test -e /usr/local/ibmcloud/autocomplete/zsh_autocomplete && \
 
 if [[ "$OSTYPE" == "darwin"* ]]
 then
-  # Use MacVim for terminal vim
-  alias vim="mvim -v"
-
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 

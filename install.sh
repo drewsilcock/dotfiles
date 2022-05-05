@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eou pipefail
+set -eoxu pipefail
 
 create_symlink() {
     echo "... $1"
@@ -25,16 +25,14 @@ create_symlink .zshrc
 
 rm -rf ~/.vim && create_symlink vim .vim
 mkdir -p ~/.config
-mv ~/.config/fish ~/.config/fish_backup 2> /dev/null
+mv ~/.config/fish ~/.config/fish_backup 2> /dev/null || true
 create_symlink fish .config/fish
-mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null
+mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null || true
 create_symlink nvim .config/nvim
 
-mkdir -p ~/bin
-for file_path in $(\ls ./bin/*); do
-    file_name=$(basename "$file_path")
-    create_symlink "bin/$file_name"
-done
+mkdir -p ~/.local
+mv ~/.local/bin ~/.local/bin_backup 2> /dev/null || true
+create_symlink bin .local/bin
 
 test -e .zsh_machine && create_symlink .zsh_machine
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -45,14 +43,20 @@ echo "[1/3] Done."
 
 echo "[2/3] Installing tools..."
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! [ -x "$(command -v brew)" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Homebrew post-installation steps.
-if test -e /home/linuxbrew/.linuxbrew/bin/brew; then
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.profile
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # Homebrew post-installation steps.
+    if test -e /home/linuxbrew/.linuxbrew/bin/brew; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    else
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
 fi
-test -e apt-get && sudo apt-get install build-essential
+
+if [ -x "$(command -v apt-get)" ]; then
+    sudo apt-get install build-essential
+fi
 
 brew install \
     fish \

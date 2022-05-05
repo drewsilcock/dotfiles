@@ -3,8 +3,7 @@
 	email = drew.silcock@stfc.ac.uk
 	signingkey = B445BCFA63263720
 [core]
-	editor = mvim -f
-	#pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = nvim -f
 [alias]
 	up = pull --rebase --autostash
 	graph = log --graph --date=relative --branches --all
@@ -19,7 +18,7 @@
 [mergetool "bc3"]
 	trustExitCode = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
