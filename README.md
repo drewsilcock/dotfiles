@@ -123,3 +123,7 @@ Import profile `iterm2-profile.json`.
 ### Rectangle
 
 https://rectangleapp.com/
+
+### Dropbox
+
+https://www.dropbox.com/en_GB/desktop
