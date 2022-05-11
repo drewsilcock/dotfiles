@@ -111,6 +111,8 @@ https://www.dropbox.com/en_GB/desktop
 
 "Shortcuts" > "Spotlight" - untick both of these.
 
+"Text" - untick "Add full stop with double-space".
+
 Enable keyboard repeat globally:
 
 ```bash
