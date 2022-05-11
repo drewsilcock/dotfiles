@@ -70,23 +70,6 @@ Link: https://slack.com/intl/en-gb/downloads
 
 Link: https://www.gimp.org/downloads/
 
-### Docker + minikube
-
-```bash
-brew install hyperkit docker docker-compose minikube
-minikube start --no-kubernetes=true
-
-# Bash, Zsh
-eval $(minikube -p minikube docker-env)
-
-# Fish
-eval (minikube -p minikube docker-env)
-
-echo "`minikube ip` docker" | sudo tee -a /etc/hosts > /dev/null
-```
-
-Once you've done this, you should automate the running of minikube using a plist (macOS) or service (Linux). Relevant files not yet available in this repo.
-
 ### Python tools - pyenv, poetry
 
 ```bash
@@ -114,16 +97,66 @@ Link: https://go.dev/doc/install
 
 https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf
 
-### iTerm2
+### Dropbox
+
+https://www.dropbox.com/en_GB/desktop
+
+### macOS
+
+#### Keyboard Settings
+
+"Keyboard" > "Modifier Keys" - change caps lock to escape.
+
+"Keyboard"" - Key repeat and delay until repeat set to shortest and fastest.
+
+"Shortcuts" > "Spotlight" - untick both of these.
+
+Enable keyboard repeat globally:
+
+```bash
+defaults write -g ApplePressAndHoldEnabled -bool false
+```
+
+You need to restart for this to fully take effect.
+
+#### iTerm2
 
 https://iterm2.com/
 
 Import profile `iterm2-profile.json`.
 
-### Rectangle
+#### Itsycal
+
+https://www.mowglii.com/itsycal/
+
+#### Rectangle
 
 https://rectangleapp.com/
 
-### Dropbox
+### Docker + minikube
 
-https://www.dropbox.com/en_GB/desktop
+Intel silicon:
+
+```bash
+brew install hyperkit docker docker-compose minikube
+minikube start --no-kubernetes=true
+
+# Bash, Zsh
+eval $(minikube -p minikube docker-env)
+
+# Fish
+eval (minikube -p minikube docker-env)
+
+echo "`minikube ip` docker" | sudo tee -a /etc/hosts > /dev/null
+```
+
+Apple silicon (see https://github.com/kubernetes/minikube/issues/11885):
+
+```bash
+brew install podman minikube
+podman machine init --cpus 2 --disk-size 150 --rootful
+podman machine start
+minikube start --no-kubernetes=true --driver=podman
+```
+
+Once you've done this, you should automate the running of minikube using a plist (macOS) or service (Linux). Relevant files not yet available in this repo.
