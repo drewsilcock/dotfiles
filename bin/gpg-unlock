@@ -1,0 +1,4 @@
+
+#!/bin/bash
+
+gpg --sign -o test.gpg /etc/mail.rc && rm test.gpg
