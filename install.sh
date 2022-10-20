@@ -44,7 +44,10 @@ echo "[1/3] Done."
 echo "[2/3] Installing tools..."
 
 if ! [ -x "$(command -v brew)" ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    curl -o install-brew.sh -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    
+    /bin/bash install-brew.sh
+    rm install-brew.sh
 
     # Homebrew post-installation steps.
     if test -e /home/linuxbrew/.linuxbrew/bin/brew; then
