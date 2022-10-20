@@ -67,6 +67,7 @@ brew install \
     exa \
     starship \
     jq \
+    fd \
     bat \
     fzf \
     hexyl \
