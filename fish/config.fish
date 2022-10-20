@@ -1,3 +1,9 @@
+if test -e "/home/linuxbrew/.linuxbrew/bin/brew"
+  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+else if test -e "/opt/homebrew/bin/brew"
+  eval (/opt/homebrew/bin/brew shellenv)
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
     if type -q pyenv
@@ -45,10 +51,28 @@ if test -d "$HOME/.local/bin"
   set PATH "$HOME/.local/bin" $PATH
 end
 
-if test -e "/home/linuxbrew/.linuxbrew/bin/brew"
-  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-else if test -e "/opt/homebrew/bin/brew"
-  eval (/opt/homebrew/bin/brew shellenv)
+if set -q GOPATH
+  set -l go_bin "$GOPATH/bin"
+else
+  set -l go_bin "$HOME/go/bin"
+end
+
+if test -d "$go_bin"
+  fish_add_path "$go_bin"
+end
+
+if test -d "/opt/homebrew/opt/openssl@3"
+  fish_add_path "/opt/homebrew/opt/openssl@1.1/bin"
+  set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/openssl@1.1/lib"
+  set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/openssl@1.1/include"
+  set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+end
+
+if test -d "/opt/homebrew/opt/libpq"
+  fish_add_path "/opt/homebrew/opt/libpq/bin"
+  set -gx LDFLAGS "-L/opt/homebrew/opt/libpq/lib $LDFLAGS"
+  set -gx CPPFLAGS "-I/opt/homebrew/opt/libpq/include $CPPFLAGS"
+  set -gx PKG_CONFIG_PATH "$PKG_CONFIG_PATH:/opt/homebrew/opt/libpq/lib/pkgconfig"
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
