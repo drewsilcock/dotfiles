@@ -3,7 +3,7 @@
 	email = drew.silcock@stfc.ac.uk
 	signingkey = B445BCFA63263720
 [core]
-	editor = nvim -f
+	editor = vim -f
 [alias]
 	up = pull --rebase --autostash
 	graph = log --graph --date=relative --branches --all
