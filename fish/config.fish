@@ -1,3 +1,19 @@
+if test -e /usr/libexec/java_home
+  set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
+end
+
+if test -d "$HOME/.cargo"
+  fish_add_path "$HOME/.cargo/bin"
+end
+
+if test -d "$HOME/Library/Python/3.8"
+  fish_add_path "$HOME/Library/Python/3.8/bin"
+end
+
+if test -d "$HOME/.local/bin"
+  fish_add_path "$HOME/.local/bin"
+end
+
 if test -e "/home/linuxbrew/.linuxbrew/bin/brew"
   eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 else if test -e "/opt/homebrew/bin/brew"
@@ -22,6 +38,8 @@ alias la='exa --git -F --icons -la'
 alias fzf='fzf --layout=reverse --height=40% --border'
 alias wacom-restart='launchctl unload /Library/LaunchAgents/com.wacom.* && launchctl load /Library/LaunchAgents/com.wacom.*'
 alias ktl=kubectl
+alias src='type -q deactivate && deactivate; source ./.venv/bin/activate.fish'
+alias adog='git log --graph --oneline --decorate --all'
 
 if type -q bat
   alias preview="fd -E 'go' -E .git --type f | fzf --preview 'bat --plain --color=always {}'"
@@ -33,22 +51,6 @@ end
 
 if type -q minikube
   minikube -p minikube docker-env | source
-end
-
-if test -e /usr/libexec/java_home
-  set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
-end
-
-if test -d "$HOME/.cargo"
-  set PATH "$HOME/.cargo/bin" $PATH
-end
-
-if test -d "$HOME/Library/Python/3.8"
-  set PATH "$HOME/Library/Python/3.8/bin" $PATH
-end
-
-if test -d "$HOME/.local/bin"
-  set PATH "$HOME/.local/bin" $PATH
 end
 
 if set -q GOPATH
