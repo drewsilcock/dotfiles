@@ -58,7 +58,7 @@ if ! [ -x "$(command -v brew)" ]; then
 fi
 
 if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install build-essential
+    sudo apt install -y build-essential
 fi
 
 brew install \
