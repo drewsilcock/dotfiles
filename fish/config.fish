@@ -40,6 +40,7 @@ alias wacom-restart='launchctl unload /Library/LaunchAgents/com.wacom.* && launc
 alias ktl=kubectl
 alias src='type -q deactivate && deactivate; source ./.venv/bin/activate.fish'
 alias adog='git log --graph --oneline --decorate --all'
+alias sync-podman-clock='podman machine ssh "sudo chronyc -m \'burst 4/4\' makestep; date -u"'
 
 if type -q bat
   alias preview="fd -E 'go' -E .git --type f | fzf --preview 'bat --plain --color=always {}'"
@@ -53,6 +54,29 @@ if type -q minikube
   minikube -p minikube docker-env | source
 end
 
+<<<<<<< Updated upstream
+=======
+#if test -e /usr/libexec/java_home
+#  set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
+#end
+
+if test -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+  fish_add_path "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+end
+
+if test -d "$HOME/.cargo"
+  set PATH "$HOME/.cargo/bin" $PATH
+end
+
+if test -d "$HOME/Library/Python/3.8"
+  set PATH "$HOME/Library/Python/3.8/bin" $PATH
+end
+
+if test -d "$HOME/.local/bin"
+  set PATH "$HOME/.local/bin" $PATH
+end
+
+>>>>>>> Stashed changes
 if set -q GOPATH
   set -l go_bin "$GOPATH/bin"
 else
@@ -80,3 +104,16 @@ end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 true
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /Users/drew.silcock/.pyenv/versions/miniforge3-4.10.3-10/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+function envsource
+  for line in (cat $argv | grep -v '^#' | grep -v '^\s*$')
+    set item (string split -m 1 '=' $line)
+    set -gx $item[1] (string trim --chars=\'\" $item[2])
+    echo "Exported key $item[1]"
+  end
+end

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Script to check for sudo rights, and add them to the user if they're not present
+# It is possible to add rights without checking, but I believe it's best to only use the add command if needed
+
+COMMAND=/Applications/Privileges.app/Contents/Resources/PrivilegesCLI
+
+# Check if the status command indicates we have standard rights
+# Exit code of 0 indicates match, which indicates standard user rights
+$COMMAND --status 2>&1 | grep "standard user rights" -q
+
+if [[ $? -eq 0 ]]; then
+  # Add rights if needed, ignoring output
+  $COMMAND --add &> /dev/null
+else
+  # Do nothing
+  exit 0
+fi
+

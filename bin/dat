@@ -22,5 +22,5 @@ fi
 if isutf8 -q "$1"; then
     bat $DAT_BAT_OPTIONS "$1"
 else
-    hexyl $DAT_HEXYL_OPTIONS "$1" | less -F -S -R -M -i
+    hexyl $DAT_HEXYL_OPTIONS -v "$1" | less -F -S -R -M -i
 fi

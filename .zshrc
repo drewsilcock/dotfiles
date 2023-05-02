@@ -11,78 +11,78 @@ fi
 zplug "zplug/zplug"
 
 # Theme
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+eval "$(starship init zsh)"
 
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 
 # For node
-zplug "tj/n", use:"bin/n", as:command
+#zplug "tj/n", use:"bin/n", as:command
 
 # oh-my-zsh features
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 
 # scripts
-zplug "trapd00r/ls--", as:command, use:"ls++", if:"type perl > /dev/null", hook-build:"cp ~/.zplug/repos/trapd00r/ls--/ls++.conf ~/.ls++.conf"
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
-zplug "so-fancy/diff-so-fancy", as:command, use:"third_party/build_fatpack/diff-so-fancy"
-zplug "denilsonsa/prettyping", as:command, use:"prettyping"
+#zplug "trapd00r/ls--", as:command, use:"ls++", if:"type perl > /dev/null", hook-build:"cp ~/.zplug/repos/trapd00r/ls--/ls++.conf ~/.ls++.conf"
+#zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+#zplug "so-fancy/diff-so-fancy", as:command, use:"third_party/build_fatpack/diff-so-fancy"
+#zplug "denilsonsa/prettyping", as:command, use:"prettyping"
 
 # Recommended installs:
 #
 # https://github.com/dandavison/delta
 
-if [[ "$OSTYPE" == "linux-gnu" ]]
-then
-  # These from GitHub releases only have Linux releases.
-  if ! command -v bat >/dev/null 2>&1
-  then
-    zplug "sharkdp/bat", \
-      as:command, \
-      from:gh-r, \
-      use:"*x86_64*linux-gnu*", \
-      rename-to:bat
-  fi
-
-  if ! command -v fd >/dev/null 2>&1
-  then
-    zplug "sharkdp/fd", \
-      as:command, \
-      from:gh-r, \
-      use:"*x86_64*linux-gnu*", \
-      rename-to:fd
-  fi
-
-  if ! command -v hexyl >/dev/null 2>&1
-  then
-    zplug "sharkdp/hexyl", \
-      as:command, \
-      from:gh-r, \
-      use:"*x86_64*linux-gnu*", \
-      rename-to:hexyl
-  fi
-
-  if ! command -v tldr >/dev/null 2>&1
-  then
-    zplug "dbrgn/tealdeer", \
-      as:command, \
-      from:gh-r, \
-      use:"*x86_64*", \
-      rename-to:tldr
-  fi
-
-  if ! command -v exa >/dev/null 2>&1
-  then
-    zplug "ogham/exa", \
-      as:command, \
-      from:gh-r, \
-      use:"*linux*", \
-      rename-to:exa
-  fi
-else
-fi
+#if [[ "$OSTYPE" == "linux-gnu" ]]
+#then
+#  # These from GitHub releases only have Linux releases.
+#  if ! command -v bat >/dev/null 2>&1
+#  then
+#    zplug "sharkdp/bat", \
+#      as:command, \
+#      from:gh-r, \
+#      use:"*x86_64*linux-gnu*", \
+#      rename-to:bat
+#  fi
+#
+#  if ! command -v fd >/dev/null 2>&1
+#  then
+#    zplug "sharkdp/fd", \
+#      as:command, \
+#      from:gh-r, \
+#      use:"*x86_64*linux-gnu*", \
+#      rename-to:fd
+#  fi
+#
+#  if ! command -v hexyl >/dev/null 2>&1
+#  then
+#    zplug "sharkdp/hexyl", \
+#      as:command, \
+#      from:gh-r, \
+#      use:"*x86_64*linux-gnu*", \
+#      rename-to:hexyl
+#  fi
+#
+#  if ! command -v tldr >/dev/null 2>&1
+#  then
+#    zplug "dbrgn/tealdeer", \
+#      as:command, \
+#      from:gh-r, \
+#      use:"*x86_64*", \
+#      rename-to:tldr
+#  fi
+#
+#  if ! command -v exa >/dev/null 2>&1
+#  then
+#    zplug "ogham/exa", \
+#      as:command, \
+#      from:gh-r, \
+#      use:"*linux*", \
+#      rename-to:exa
+#  fi
+#else
+#fi
 
 
 # Install plugins that are not installed
@@ -93,42 +93,6 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 ## end zplug ##
-
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  # hg          # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
-  # elixir      # Elixir section
-  # xcode       # Xcode section
-  swift         # Swift section
-  golang        # Go section
-  # php         # PHP section
-  rust          # Rust section
-  # haskell     # Haskell Stack section
-  # julia       # Julia section
-  docker        # Docker section
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  # dotnet      # .NET section
-  # ember       # Ember.js section
-  kubecontext   # Kubectl context section
-  # terraform   # Terraform workspace section
-  exec_time     # Execution time
-  line_sep      # Line break
-  battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
 
 # Misc zsh config
 HISTFILE=~/.zsh_history
@@ -141,17 +105,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=240
 
 
-if type bat >/dev/null 2>&1; then
-    alias preview="fd -E 'go' -E .git --type f | fzf --preview 'bat --plain --color=always {}'"
-fi
-
 if type fd >/dev/null 2>&1; then
     export FZF_DEFAULT_COMMAND="fd --type f --exclude .git"
-fi
-
-# dircolors
-if [[ -a $HOME/.dircolors ]]; then
-    eval $(dircolors -b $HOME/.dircolors)
 fi
 
 # Go
@@ -217,32 +172,32 @@ source "$HOME/.aliases"
 ext-ip() { curl http://ipecho.net/plain; echo }
 
 # Autosuggest is ctrl+space
-bindkey '^ ' autosuggest-accept
+#bindkey '^ ' autosuggest-accept
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-elif [[ "$OSTYPE" == "darwin"* ]]
-then
-  export EDITOR='vim'
-else
-  export EDITOR="gvim"
-fi
+#if [[ -n $SSH_CONNECTION ]]; then
+#  export EDITOR='vim'
+#elif [[ "$OSTYPE" == "darwin"* ]]
+#then
+#  export EDITOR='vim'
+#else
+#  export EDITOR="gvim"
+#fi
 
 # To use a different version of Java, simply change the "1.8" to whichever version you want.
-test -e "/usr/libexec/java_home" && export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
+#test -e "/usr/libexec/java_home" && export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if command -v pyenv 1>/dev/null 2>&1; then
    eval "$(pyenv init -)"
 fi
 
 # Bash completion for IBM Cloud API
-test -e /usr/local/ibmcloud/autocomplete/zsh_autocomplete && \
-  source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
+#test -e /usr/local/ibmcloud/autocomplete/zsh_autocomplete && \
+#  source /usr/local/ibmcloud/autocomplete/zsh_autocomplete
 
 if [[ "$OSTYPE" == "darwin"* ]]
 then
@@ -250,7 +205,7 @@ then
 fi
 
 # Wasmer
-export WASMER_DIR="$HOME/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+#export WASMER_DIR="$HOME/.wasmer"
+#[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
