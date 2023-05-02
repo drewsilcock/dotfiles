@@ -54,8 +54,6 @@ if type -q minikube
   minikube -p minikube docker-env | source
 end
 
-<<<<<<< Updated upstream
-=======
 #if test -e /usr/libexec/java_home
 #  set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
 #end
@@ -76,7 +74,6 @@ if test -d "$HOME/.local/bin"
   set PATH "$HOME/.local/bin" $PATH
 end
 
->>>>>>> Stashed changes
 if set -q GOPATH
   set -l go_bin "$GOPATH/bin"
 else
