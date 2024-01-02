@@ -38,9 +38,11 @@ brew install --cask macdown
 
 Link: https://tableplus.com/download
 
-### Bear
+### Obsidian
 
-Link: https://bear.app/
+Link: https://bear.app/](https://obsidian.md/
+
+Select "Open existing vault" and choose "Dropbox" > "Obsidian" > "Notes" (install Dropbox first).
 
 ### Sublime Text
 
