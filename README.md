@@ -95,7 +95,7 @@ Link: https://go.dev/doc/install
 
 ### Ubuntu Mono Nerd Font
 
-https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf
+https://github.com/ryanoasis/nerd-fonts/releases
 
 ### Dropbox
 
