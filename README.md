@@ -56,14 +56,6 @@ Link: https://www.sublimemerge.com/download
 
 Link: https://www.jetbrains.com/go/download/
 
-### CLion
-
-Link: https://www.jetbrains.com/clion/download/
-
-### IDEA
-
-Link: https://www.jetbrains.com/idea/download/
-
 ### Slack
 
 Link: https://slack.com/intl/en-gb/downloads
