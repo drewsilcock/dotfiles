@@ -131,6 +131,8 @@ Import profile `iterm2-profile.json`.
 
 https://www.mowglii.com/itsycal/
 
+Go to "Settings", tick "Hide icon" and under datetime format put `E MMM d H:mm`.
+
 #### Rectangle
 
 https://rectangleapp.com/
