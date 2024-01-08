@@ -75,9 +75,13 @@ brew install \
     ripgrep \
     git-delta \
     go-task/tap/go-task \
-    tealdeer
+    tealdeer \
+    postgresql \
+    pipx
     
 $(brew --prefix)/opt/fzf/install
+
+pipx install poetry
 
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 echo "[2/2] Done."
