@@ -77,7 +77,8 @@ brew install \
     go-task/tap/go-task \
     tealdeer \
     postgresql \
-    pipx
+    pipx \
+    bottom
     
 $(brew --prefix)/opt/fzf/install
 
