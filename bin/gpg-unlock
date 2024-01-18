@@ -1,4 +1,7 @@
-
 #!/bin/bash
 
-gpg --sign -o test.gpg /etc/mail.rc && rm test.gpg
+set -euo pipefail
+
+echo "Hello" > /tmp/gpg-unlock.txt
+gpg --sign -o /tmp/gpg-unlock.gpg /tmp/gpg-unlock.txt
+rm -f /tmp/gpg-unlock.{txt,gpg}
