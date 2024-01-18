@@ -15,6 +15,15 @@ cd -
 
 **⚠️  WARNING! ⚠️**- This will overwrite existing config files without saving them. *Use at your own risk!*
 
+## Post-Install Steps
+
+Log into Atuin:
+
+```bash
+atuin login
+atuin sync
+```
+
 ## Todo
 
 - If a config file is already present, prompt user for action instead of overwriting (i.e. [o]verwrite, [b]ackup, [s]kip, [q]uit).

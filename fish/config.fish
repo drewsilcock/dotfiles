@@ -1,5 +1,5 @@
 if test -e /usr/libexec/java_home
-  set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8)
+  set -gx JAVA_HOME (/usr/libexec/java_home -v 1.8 2> /dev/null)
 end
 
 if test -d "$HOME/.cargo"
@@ -21,20 +21,31 @@ else if test -e "/opt/homebrew/bin/brew"
 end
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-    if type -q pyenv
-      pyenv init --path | source
-    end
-end
+  # Commands to run in interactive sessions can go here
+  if type -q pyenv
+    pyenv init --path | source
+  end
 
-starship init fish | source
+  if type -q starship
+    starship init fish | source
+  end
+
+  if type -q atuin
+    atuin init fish | source
+  end
+
+  if type -q minikube
+    minikube -p minikube docker-env | source
+  end
+end
 
 alias vim='nvim'
 alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
-alias ls='exa --git -F --icons'
-alias la='exa --git -F --icons -la'
+alias gds='git diff --staged'
+alias ls='eza --git -F --icons'
+alias la='eza --git -F --icons -la'
 alias fzf='fzf --layout=reverse --height=40% --border'
 alias wacom-restart='launchctl unload /Library/LaunchAgents/com.wacom.* && launchctl load /Library/LaunchAgents/com.wacom.*'
 alias ktl=kubectl
@@ -48,10 +59,6 @@ end
 
 if type -q fd
   set -gx FZF_DEFAULT_COMMAND "fd --type f --exclude .git"
-end
-
-if type -q minikube
-  minikube -p minikube docker-env | source
 end
 
 #if test -e /usr/libexec/java_home
@@ -100,13 +107,6 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
-true
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /Users/drew.silcock/.pyenv/versions/miniforge3-4.10.3-10/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
 function envsource
   for line in (cat $argv | grep -v '^#' | grep -v '^\s*$')
     set item (string split -m 1 '=' $line)
@@ -114,3 +114,5 @@ function envsource
     echo "Exported key $item[1]"
   end
 end
+
+true

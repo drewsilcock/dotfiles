@@ -64,7 +64,7 @@ fi
 brew install \
     fish \
     neovim \
-    exa \
+    eza \
     starship \
     jq \
     fd \
@@ -78,7 +78,9 @@ brew install \
     tealdeer \
     postgresql \
     pipx \
-    bottom
+    bottom \
+    gnupg \
+    atuin
     
 $(brew --prefix)/opt/fzf/install
 
