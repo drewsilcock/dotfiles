@@ -62,6 +62,7 @@ if [ -x "$(command -v apt-get)" ]; then
 fi
 
 brew install \
+    wget \
     fish \
     neovim \
     eza \
