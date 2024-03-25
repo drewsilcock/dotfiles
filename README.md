@@ -89,6 +89,8 @@ https://www.dropbox.com/en_GB/desktop
 
 ### macOS
 
+"System Settings" > Log into Apple ID.
+
 #### Keyboard Settings
 
 "Keyboard" > "Modifier Keys" - change caps lock to escape.
@@ -122,6 +124,8 @@ Go to "Settings", tick "Hide icon" and under datetime format put `E MMM d H:mm`.
 #### Rectangle
 
 https://rectangleapp.com/
+
+Open settings, change "Maximise" to "^⌥A".
 
 ### MacDown
 
@@ -166,3 +170,20 @@ minikube start --no-kubernetes=true --driver=podman
 ```
 
 Once you've done this, you should automate the running of minikube using a plist (macOS) or service (Linux). Relevant files not yet available in this repo.
+
+### Work stuff
+
+Request escalated privileges from "Privileges" app, then run (see: https://github.com/SAP/macOS-enterprise-privileges/wiki/Uninstallation):
+
+```bash
+sudo rm -r /Applications/Privileges.app /Library/PrivilegedHelperTools/corp.sap.privileges.helper /Library/LaunchDaemons/corp.sap.privileges.helper.plist
+```
+
+Install from STFC Self-Service app:
+
+- Zoom
+- EVPN
+- DL MFD Print
+- Excel, OneDrive, Outlook, PowerPoint, Microsoft To Do, Word (not Teams)
+
+Install Teams directly to get new version: https://www.microsoft.com/en-gb/microsoft-teams/download-app
