@@ -49,7 +49,7 @@ Link: https://tableplus.com/download
 
 ### Obsidian
 
-Link: https://bear.app/](https://obsidian.md/
+Link: https://obsidian.md/
 
 Select "Open existing vault" and choose "Dropbox" > "Obsidian" > "Notes" (install Dropbox first).
 
