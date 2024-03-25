@@ -37,12 +37,6 @@ Extra things to install if you need them:
 
 Link: https://code.visualstudio.com/download
 
-### MacDown
-
-```bash
-brew install --cask macdown
-```
-
 ### TablePlus
 
 Link: https://tableplus.com/download
@@ -65,20 +59,13 @@ Link: https://www.sublimemerge.com/download
 
 Link: https://www.jetbrains.com/go/download/
 
-### Slack
+### Raycast
 
-Link: https://slack.com/intl/en-gb/downloads
+Link: https://www.raycast.com/
 
 ### GIMP
 
 Link: https://www.gimp.org/downloads/
-
-### Python tools - pyenv, poetry
-
-```bash
-brew install pyenv
-curl -sSL https://install.python-poetry.org | python3 -
-```
 
 ### Node tools - nvm
 
@@ -139,6 +126,16 @@ Go to "Settings", tick "Hide icon" and under datetime format put `E MMM d H:mm`.
 #### Rectangle
 
 https://rectangleapp.com/
+
+### MacDown
+
+```bash
+brew install --cask macdown
+```
+
+### Docker Desktop
+
+Link: https://www.docker.com/products/docker-desktop/
 
 ### Docker + minikube
 
