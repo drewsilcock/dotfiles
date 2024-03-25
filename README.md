@@ -59,10 +59,6 @@ Link: https://www.sublimemerge.com/download
 
 Link: https://www.jetbrains.com/go/download/
 
-### Raycast
-
-Link: https://www.raycast.com/
-
 ### GIMP
 
 Link: https://www.gimp.org/downloads/
@@ -132,6 +128,12 @@ https://rectangleapp.com/
 ```bash
 brew install --cask macdown
 ```
+
+### Raycast
+
+Link: https://www.raycast.com/
+
+"System Settings" > "Siri & Spotlight" > untick "Ask Siri" & untick all boxes under "Spotlight" > "Search results"
 
 ### Docker Desktop
 
