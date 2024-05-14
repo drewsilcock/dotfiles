@@ -39,7 +39,7 @@ if status is-interactive
   end
 
   if type -q nvm
-    nvm use lts
+    nvm use lts &> /dev/null
   end
 end
 
