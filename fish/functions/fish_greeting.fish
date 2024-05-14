@@ -1,9 +1,9 @@
 function fish_greeting
 
   if type -q ip
-    set ip_addr (ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+    set ip_addr (ip -o -4 addr list | awk '{print $4}' | cut -d/ -f1 | grep -v '127.0.0.1' | string join ', ')
   else if type -q ipconfig
-    set ip_addr (ipconfig getifaddr en0)
+    set ip_addr (ipconfig getifaddr en0 2> /dev/null)
   else
     set ip_addr "Unknown"
   end
