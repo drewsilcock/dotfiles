@@ -3,7 +3,7 @@ if test -e /usr/libexec/java_home
 end
 
 if test -d "$HOME/.cargo"
-  fish_add_path "$HOME/.cargo/bin"
+  source "$HOME/.cargo/env.fish"
 end
 
 if test -d "$HOME/Library/Python/3.8"
@@ -36,6 +36,10 @@ if status is-interactive
 
   if type -q minikube
     minikube -p minikube docker-env | source
+  end
+
+  if type -q nvm
+    nvm use lts
   end
 end
 

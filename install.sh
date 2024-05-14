@@ -27,8 +27,8 @@ rm -rf ~/.vim && create_symlink vim .vim
 mkdir -p ~/.config
 mv ~/.config/fish ~/.config/fish_backup 2> /dev/null || true
 create_symlink fish .config/fish
-mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null || true
-create_symlink nvim .config/nvim
+
+git clone https://github.com/NvChad/starter ~/.config/nvim
 
 mkdir -p ~/.local
 mv ~/.local/bin ~/.local/bin_backup 2> /dev/null || true
@@ -79,6 +79,7 @@ brew install \
     tealdeer \
     postgresql \
     pipx \
+    pyenv \
     bottom \
     gnupg \
     atuin
@@ -87,8 +88,16 @@ $(brew --prefix)/opt/fzf/install
 
 pipx install poetry
 
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+curl -o install-starship.sh -fsSL https://starship.rs/install.sh
+/bin/bash install-starship.sh
+rm install-starship.sh
+
+fish -c 'fisher install jorgebucaran/nvm.fish && nvm install lts'
+
 echo "[2/2] Done."
+
+echo "Running post-install steps..."
+echo "Run :MasonInstallAll once nvim has loaded plugins."
 
 echo
 echo "Finished installing dotfiles. Please restart your shell for changes to take effect."

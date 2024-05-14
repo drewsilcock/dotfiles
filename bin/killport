@@ -1,7 +1,47 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -euo pipefail
+
+function usage {
+  echo "Usage: killport <port> [--force]"
+  echo "Kills the process that is using the specified port"
+  echo "  --force: Skip confirmation"
+  exit 1
+}
+
+function kill_process {
+    echo "Killing process $1"
+    sudo kill -9 $1
+}
+
+if [ $# -lt 1 ]; then
+  usage
+fi
 
 PID=$(sudo lsof -i -P | grep LISTEN | grep :$1 | cut -d ' ' -f7)
 
-kill -9 $PID
+# If PID is empty, then port is not in use
+if [ -z "$PID" ]; then
+  echo "Port $1 is not in use"
+  exit 1
+fi
+
+
+# Ask for confirmation
+echo "Process $PID is using port $1"
+ps -p $PID -o pid,stime,tty,etime,command
+
+if [ $# -eq 2 ] && [ $2 == "--force" ]; then
+  kill_process $PID
+  exit 0
+fi
+
+read -p "Are you sure you want to kill this process? (y/n) " -n 1 -r
+echo
+
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo "Aborted"
+  exit 2
+fi
+
+kill_process $PID
