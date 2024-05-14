@@ -28,6 +28,7 @@ mkdir -p ~/.config
 mv ~/.config/fish ~/.config/fish_backup 2> /dev/null || true
 create_symlink fish .config/fish
 
+mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null || true
 git clone https://github.com/NvChad/starter ~/.config/nvim
 
 mkdir -p ~/.local
@@ -88,16 +89,12 @@ $(brew --prefix)/opt/fzf/install
 
 pipx install poetry
 
-curl -o install-starship.sh -fsSL https://starship.rs/install.sh
-/bin/bash install-starship.sh
-rm install-starship.sh
-
-fish -c 'fisher install jorgebucaran/nvm.fish && nvm install lts'
+fish -c 'fisher update && nvm install lts'
 
 echo "[2/2] Done."
 
 echo "Running post-install steps..."
-echo "Run :MasonInstallAll once nvim has loaded plugins."
+echo "Run :MasonInstallAll once nvim has loaded plugins." | nvim
 
 echo
 echo "Finished installing dotfiles. Please restart your shell for changes to take effect."
