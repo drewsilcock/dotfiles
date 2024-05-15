@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eoxu pipefail
+set -eou pipefail
 
 create_symlink() {
     echo "... $1"
@@ -18,8 +18,7 @@ create_symlink .aliases
 create_symlink .gdbinit
 create_symlink .gitconfig
 create_symlink .gvimrc
-create_symlink .tmux.conf.local
-create_symlink tmux/.tmux.conf .tmux.conf
+create_symlink .tmux.conf .tmux.conf
 create_symlink .vimrc
 create_symlink .zshrc
 
@@ -35,6 +34,8 @@ mkdir -p ~/.local
 mv ~/.local/bin ~/.local/bin_backup 2> /dev/null || true
 create_symlink bin .local/bin
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 test -e .zsh_machine && create_symlink .zsh_machine
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
@@ -44,10 +45,15 @@ echo "[1/2] Done."
 
 echo "[2/2] Installing tools..."
 
+# Prevent a common Linux issue when installing loads of things with brew at the same
+# time.
+ulimit -n 65536
+
 if ! [ -x "$(command -v brew)" ]; then
     curl -o install-brew.sh -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-    
-    /bin/bash install-brew.sh
+
+    # https://github.com/Homebrew/install/issues/612
+    NONINTERACTIVE=1 CI=1 /bin/bash install-brew.sh
     rm install-brew.sh
 
     # Homebrew post-installation steps.
@@ -85,7 +91,7 @@ brew install \
     gnupg \
     atuin
     
-$(brew --prefix)/opt/fzf/install
+$(brew --prefix)/opt/fzf/install --bin
 
 pipx install poetry
 
@@ -94,6 +100,10 @@ fish -c 'fisher update && nvm install lts'
 echo "[2/2] Done."
 
 echo "Running post-install steps..."
+
+echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells
+sudo chsh -s "$(brew --prefix)/bin/fish" "$USER"
+
 echo "Run :MasonInstallAll once nvim has loaded plugins." | nvim
 
 echo
