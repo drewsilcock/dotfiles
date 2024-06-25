@@ -53,6 +53,7 @@ alias la='eza --git -F --icons -la'
 alias fzf='fzf --layout=reverse --height=40% --border'
 alias wacom-restart='launchctl unload /Library/LaunchAgents/com.wacom.* && launchctl load /Library/LaunchAgents/com.wacom.*'
 alias ktl=kubectl
+alias k=kubectl
 alias src='type -q deactivate && deactivate; source ./.venv/bin/activate.fish'
 alias adog='git log --graph --oneline --decorate --all'
 alias sync-podman-clock='podman machine ssh "sudo chronyc -m \'burst 4/4\' makestep; date -u"'

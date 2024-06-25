@@ -90,7 +90,7 @@ brew install \
     bottom \
     gnupg \
     atuin
-    
+
 $(brew --prefix)/opt/fzf/install --bin
 
 pipx install poetry
