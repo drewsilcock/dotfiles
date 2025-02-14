@@ -13,7 +13,10 @@ create_symlink() {
     fi
 }
 
-echo "[1/2] Creating configuration symlinks..."
+echo "[1/2] Creating configuration symlinks/files..."
+
+mkdir -p ~/.config ~/.local ~/.tmux/plugins ~/.config/ghostty
+
 create_symlink .aliases
 create_symlink .gdbinit
 create_symlink .gitconfig
@@ -21,19 +24,23 @@ create_symlink .gvimrc
 create_symlink .tmux.conf .tmux.conf
 create_symlink .vimrc
 create_symlink .zshrc
+create_symlink ghostty.conf .config/ghostty/conf
 
 rm -rf ~/.vim && create_symlink vim .vim
-mkdir -p ~/.config
+
+rm -rf ~/.config/fish_backup
 mv ~/.config/fish ~/.config/fish_backup 2> /dev/null || true
 create_symlink fish .config/fish
 
+rm -rf ~/.config/nvim_backup
 mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null || true
 git clone https://github.com/NvChad/starter ~/.config/nvim
 
-mkdir -p ~/.local
+rm -rf ~/.local/bin_backup
 mv ~/.local/bin ~/.local/bin_backup 2> /dev/null || true
 create_symlink bin .local/bin
 
+rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 test -e .zsh_machine && create_symlink .zsh_machine
@@ -47,7 +54,7 @@ echo "[2/2] Installing tools..."
 
 # Prevent a common Linux issue when installing loads of things with brew at the same
 # time.
-ulimit -n 65536
+#ulimit -n 65536
 
 if ! [ -x "$(command -v brew)" ]; then
     curl -o install-brew.sh -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
@@ -66,6 +73,8 @@ fi
 
 if [ -x "$(command -v apt-get)" ]; then
     sudo apt install -y build-essential
+  elif [ -x "$(command -v yum)" ]; then
+    sudo yum install gcc
 fi
 
 brew install \
@@ -77,25 +86,21 @@ brew install \
     jq \
     fd \
     bat \
-    fzf \
     hexyl \
     tmux \
     ripgrep \
     git-delta \
     go-task/tap/go-task \
     tealdeer \
-    postgresql \
     pipx \
-    pyenv \
     bottom \
+    fnm \
     gnupg \
     atuin
 
-$(brew --prefix)/opt/fzf/install --bin
-
 pipx install poetry
 
-fish -c 'fisher update && nvm install lts'
+fish -c 'fisher update'
 
 echo "[2/2] Done."
 
