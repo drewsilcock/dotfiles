@@ -77,18 +77,6 @@ if test -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
   fish_add_path "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 end
 
-if test -d "$HOME/.cargo"
-  set PATH "$HOME/.cargo/bin" $PATH
-end
-
-if test -d "$HOME/Library/Python/3.8"
-  set PATH "$HOME/Library/Python/3.8/bin" $PATH
-end
-
-if test -d "$HOME/.local/bin"
-  set PATH "$HOME/.local/bin" $PATH
-end
-
 if set -q GOPATH
   set go_bin "$GOPATH/bin"
 else
