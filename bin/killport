@@ -18,7 +18,7 @@ if [ $# -lt 1 ]; then
   usage
 fi
 
-PID=$(sudo lsof -i -P | grep LISTEN | grep :$1 | cut -d ' ' -f7)
+PID=$(sudo lsof -i -P | grep LISTEN | grep :$1 | tr -s ' ' | cut -d ' ' -f2)
 
 # If PID is empty, then port is not in use
 if [ -z "$PID" ]; then
