@@ -109,11 +109,9 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 
 You need to restart for this to fully take effect.
 
-#### iTerm2
+#### Ghostty
 
-https://iterm2.com/
-
-Import profile `iterm2-profile.json`.
+https://ghostty.org/download
 
 #### Itsycal
 
@@ -139,37 +137,9 @@ Link: https://www.raycast.com/
 
 "System Settings" > "Siri & Spotlight" > untick "Ask Siri" & untick all boxes under "Spotlight" > "Search results"
 
-### Docker Desktop
+### Orbstack
 
-Link: https://www.docker.com/products/docker-desktop/
-
-### Docker + minikube
-
-Intel silicon:
-
-```bash
-brew install hyperkit docker docker-compose minikube
-minikube start --no-kubernetes=true
-
-# Bash, Zsh
-eval $(minikube -p minikube docker-env)
-
-# Fish
-eval (minikube -p minikube docker-env)
-
-echo "`minikube ip` docker" | sudo tee -a /etc/hosts > /dev/null
-```
-
-Apple silicon (see https://github.com/kubernetes/minikube/issues/11885):
-
-```bash
-brew install podman minikube
-podman machine init --cpus 2 --disk-size 150 --rootful
-podman machine start
-minikube start --no-kubernetes=true --driver=podman
-```
-
-Once you've done this, you should automate the running of minikube using a plist (macOS) or service (Linux). Relevant files not yet available in this repo.
+Link: https://orbstack.dev/download
 
 ### Work stuff
 
