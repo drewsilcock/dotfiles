@@ -38,8 +38,8 @@ if status is-interactive
     minikube -p minikube docker-env | source
   end
 
-  if type -q nvm
-    nvm use lts &> /dev/null
+  if type -q fnm
+    fnm env --use-on-cd --shell fish | source
   end
 end
 
