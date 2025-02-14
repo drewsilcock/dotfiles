@@ -90,9 +90,9 @@ if test -d "$HOME/.local/bin"
 end
 
 if set -q GOPATH
-  set -l go_bin "$GOPATH/bin"
+  set go_bin "$GOPATH/bin"
 else
-  set -l go_bin "$HOME/go/bin"
+  set go_bin "$HOME/go/bin"
 end
 
 if test -d "$go_bin"
