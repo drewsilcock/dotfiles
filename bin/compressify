@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [ "$#" -le 1 ]; then
+  echo "Usage: compressify <directory> [--skip-backup]"
+  exit 1
+fi
+
+if [ "$#" -eq 2 ] && [ "$2" == "--skip-backup" ]
+then
+  skip_backup=true
+else
+  skip_backup=false
+fi
+
+
+target_dir="$1"
+
+IFS=$'\n' jpg_files=($(find "$target_dir" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.JPG" -o -name "*.JPEG" \)))
+
+for fname in "${jpg_files[@]}"
+do
+  if [ "$skip_backup" = false ]; then
+    echo "Creating backup of $fname"
+    cp "$fname" "$fname.bak"
+  fi
+
+  echo "Compressing $fname"
+  jpegoptim --max=90 "$fname"
+done
+
