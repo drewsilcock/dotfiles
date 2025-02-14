@@ -13,7 +13,5 @@ if [[ $? -eq 0 ]]; then
   # Add rights if needed, ignoring output
   $COMMAND --add &> /dev/null
 else
-  # Do nothing
   exit 0
 fi
-

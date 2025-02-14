@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+from shutil import copy2
+from plistlib import load, dump
+from subprocess import run
+
+dock_plist_path = Path.home() / "Library/Preferences/com.apple.dock.plist"
+
+
+def backup_dock_plist():
+    backup_id = 0
+    max_tries = 1000
+
+    while True:
+        backup_path = dock_plist_path.with_name(
+            f"{dock_plist_path.name}.bak.{backup_id}"
+        )
+        if not backup_path.exists():
+            break
+        backup_id += 1
+        if backup_id >= max_tries:
+            raise RuntimeError("Too many backups, aborting.")
+
+    copy2(dock_plist_path, backup_path)
+
+
+def restart_dock():
+    run(["killall", "Dock"])
+
+
+def main():
+    with open(dock_plist_path, "rb") as fp:
+        dock_prefs = load(fp)
+
+    has_privileges_app = any(
+        app.get("tile-data", {}).get("bundle-identifier") == "corp.sap.privileges"
+        for app in dock_prefs["persistent-apps"]
+    )
+
+    if not has_privileges_app:
+        return
+
+    backup_dock_plist()
+
+    # Remove app from persistent apps where bundle identifier is equal to corp.sap.privileges.
+    dock_prefs["persistent-apps"] = [
+        app
+        for app in dock_prefs["persistent-apps"]
+        if app.get("tile-data", {}).get("bundle-identifier") != "corp.sap.privileges"
+    ]
+
+    with open(dock_plist_path, "wb") as fp:
+        dump(dock_prefs, fp)
+
+    restart_dock()
+
+
+if __name__ == "__main__":
+    main()
