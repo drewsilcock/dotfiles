@@ -100,10 +100,10 @@ if test -d "$go_bin"
 end
 
 if test -d "/opt/homebrew/opt/openssl@3"
-  fish_add_path "/opt/homebrew/opt/openssl@1.1/bin"
-  set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/openssl@1.1/lib"
-  set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/openssl@1.1/include"
-  set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+  fish_add_path "/opt/homebrew/opt/openssl@3/bin"
+  set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/openssl@3/lib"
+  set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/openssl@3/include"
+  set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/openssl@3/lib/pkgconfig:$PKG_CONFIG_PATH"
 end
 
 if test -d "/opt/homebrew/opt/libpq"
