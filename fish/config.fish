@@ -113,6 +113,10 @@ if test -d "/opt/homebrew/opt/libpq"
   set -gx PKG_CONFIG_PATH "$PKG_CONFIG_PATH:/opt/homebrew/opt/libpq/lib/pkgconfig"
 end
 
+if test -d "/opt/zig"
+  fish_add_path "/opt/zig"
+end
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 function envsource
