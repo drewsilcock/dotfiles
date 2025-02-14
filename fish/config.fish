@@ -56,7 +56,10 @@ alias ktl=kubectl
 alias k=kubectl
 alias src='type -q deactivate && deactivate; source ./.venv/bin/activate.fish'
 alias adog='git log --graph --oneline --decorate --all'
-alias sync-podman-clock='podman machine ssh "sudo chronyc -m \'burst 4/4\' makestep; date -u"'
+
+function kb -d "Run kubectl command and pipe the output to bat with YAML syntax highlighting"
+  kubectl $argv | bat -l yaml --style=numbers,grid
+end
 
 if type -q bat
   alias preview="fd -E 'go' -E .git --type f | fzf --preview 'bat --plain --color=always {}'"
