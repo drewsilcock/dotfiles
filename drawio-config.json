@@ -1,0 +1,62 @@
+{
+  "customFonts": [
+    "Moderat",
+    "Moderat Bold",
+    "Moderat Black",
+    "Moderat Italic",
+    "Roboto"
+  ],
+  "customPresetColors": [
+    "abb8c3",
+    "f78da7",
+    "cf2e2e",
+    "ff6900",
+    "fcb900",
+    "7bdcb5",
+    "00d084",
+    "8ed1fc",
+    "0693e3",
+    "9b51e0",
+    "ff5a5b",
+    "00bed5",
+    "003088",
+    "1e5df8",
+    "676767"
+  ],
+  "customColorSchemes": [
+    [
+      { "fill": "#abb8c3", "stroke": "#fff" },
+      { "fill": "#f78da7", "stroke": "#fff" },
+      { "fill": "#cf2e2e", "stroke": "#fff" },
+      { "fill": "#ff6900", "stroke": "#fff" },
+      { "fill": "#fcb900", "stroke": "#fff" },
+      { "fill": "#7bdcb5", "stroke": "#fff" },
+      { "fill": "#00d084", "stroke": "#fff" },
+      { "fill": "#8ed1fc", "stroke": "#fff" },
+      { "fill": "#0693e3", "stroke": "#fff" },
+      { "fill": "#9b51e0", "stroke": "#fff" },
+      { "fill": "#ff5a5b", "stroke": "#fff" },
+      { "fill": "#00bed5", "stroke": "#fff" },
+      { "fill": "#003088", "stroke": "#fff" },
+      { "fill": "#1e5df8", "stroke": "#fff" },
+      { "fill": "#676767", "stroke": "#fff" }
+    ]
+  ],
+  "colorNames": {
+    "abb8c3": "cyanBluishGray",
+    "f78da7": "palePink",
+    "cf2e2e": "vividRed",
+    "ff6900": "luminousVividOrange",
+    "fcb900": "luminousVividAmber",
+    "7bdcb5": "lightGreenCyan",
+    "00d084": "vividGreenCyan",
+    "8ed1fc": "paleCyanBlue",
+    "0693e3": "vividCyanBlue",
+    "9b51e0": "vividPurple",
+    "ff5a5b": "hartreeCoral",
+    "00bed5": "hartreeTeal",
+    "003088": "hartreeBlue",
+    "1e5df8": "hartreeAzure",
+    "676767": "hartreeGrey"
+  }
+}
