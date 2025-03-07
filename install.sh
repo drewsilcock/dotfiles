@@ -34,7 +34,7 @@ create_symlink fish .config/fish
 
 rm -rf ~/.config/nvim_backup
 mv ~/.config/nvim ~/.config/nvim_backup 2> /dev/null || true
-git clone https://github.com/NvChad/starter ~/.config/nvim
+create_symlink nvim .config/nvim
 
 rm -rf ~/.local/bin_backup
 mv ~/.local/bin ~/.local/bin_backup 2> /dev/null || true
