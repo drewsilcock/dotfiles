@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -euo pipefail
 
 function usage {
@@ -18,30 +17,62 @@ if [ $# -lt 1 ]; then
   usage
 fi
 
-PID=$(sudo lsof -i -P | grep LISTEN | grep :$1 | tr -s ' ' | cut -d ' ' -f2)
-
-# If PID is empty, then port is not in use
-if [ -z "$PID" ]; then
-  echo "Port $1 is not in use"
+# Validate port number
+if ! [[ "$1" =~ ^[0-9]+$ ]] || [ "$1" -lt 1 ] || [ "$1" -gt 65535 ]; then
+  echo "Error: '$1' is not a valid port number (1-65535)"
   exit 1
 fi
 
+# More robust regex patterns to match port exactly
+pid_ipv4=$(sudo lsof -i -P | grep LISTEN | grep -E "IPv4.*:$1 " | tr -s ' ' | cut -d ' ' -f2 | head -1)
+pid_ipv6=$(sudo lsof -i -P | grep LISTEN | grep -E "IPv6.*:$1 " | tr -s ' ' | cut -d ' ' -f2 | head -1)
 
-# Ask for confirmation
-echo "Process $PID is using port $1"
-ps -p $PID -o pid,stime,tty,etime,command
+pids_to_show=""
+pids_to_kill=""
 
-if [ $# -eq 2 ] && [ $2 == "--force" ]; then
-  kill_process $PID
+if [ -n "$pid_ipv4" ]; then
+  echo "Process $pid_ipv4 is using port $1 for IPv4"
+  pids_to_show="$pid_ipv4"
+  pids_to_kill="$pid_ipv4"
+fi
+
+if [ -n "$pid_ipv6" ]; then
+  echo "Process $pid_ipv6 is using port $1 for IPv6"
+  if [ -n "$pids_to_show" ]; then
+    pids_to_show="$pids_to_show,$pid_ipv6"
+    pids_to_kill="$pids_to_kill $pid_ipv6"
+  else
+    pids_to_show="$pid_ipv6"
+    pids_to_kill="$pid_ipv6"
+  fi
+fi
+
+# If no PIDs found, then port is not in use
+if [ -z "$pids_to_kill" ]; then
+  echo "Port $1 is not in use"
+  exit 0  # Changed from exit 1 - "not in use" is valid information, not an error
+fi
+
+# Show process details after echo statements
+ps -p "$pids_to_show" -o pid,stime,tty,etime,command 2>/dev/null || echo "Process details unavailable"
+
+# Check for --force flag
+if [ $# -eq 2 ] && [ "$2" == "--force" ]; then
+  for pid in $pids_to_kill; do
+    kill_process $pid
+  done
   exit 0
 fi
 
-read -p "Are you sure you want to kill this process? (y/n) " -n 1 -r
+# Ask for confirmation
+read -p "Are you sure you want to kill $(echo $pids_to_kill | wc -w) process(es)? (y/n) " -n 1 -r
 echo
-
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   echo "Aborted"
   exit 2
 fi
 
-kill_process $PID
+# Kill all processes
+for pid in $pids_to_kill; do
+  kill_process $pid
+done
