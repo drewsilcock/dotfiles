@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -euo pipefail
+
+function usage {
+  echo "Usage: whichport <port>"
+  echo "Find the process that is using the specified port"
+  exit 1
+}
+
+if [ $# -lt 1 ]; then
+  usage
+fi
+
+if ! [[ "$1" =~ ^[0-9]+$ ]] || [ "$1" -lt 1 ] || [ "$1" -gt 65535 ]; then
+  echo "Error: '$1' is not a valid port number (1-65535)"
+  exit 1
+fi
+
+pid_ipv4=$(sudo lsof -i -P | grep LISTEN | grep -E "IPv4.*:$1 " | tr -s ' ' | cut -d ' ' -f2 | head -1)
+pid_ipv6=$(sudo lsof -i -P | grep LISTEN | grep -E "IPv6.*:$1 " | tr -s ' ' | cut -d ' ' -f2 | head -1)
+
+pids_to_show=""
+
+if [ -n "$pid_ipv4" ]; then
+  echo "Process $pid_ipv4 is using port $1 for IPv4"
+  pids_to_show="$pid_ipv4"
+fi
+
+if [ -n "$pid_ipv6" ]; then
+  echo "Process $pid_ipv6 is using port $1 for IPv6"
+  if [ -n "$pids_to_show" ]; then
+    pids_to_show="$pids_to_show,$pid_ipv6"
+  else
+    pids_to_show="$pid_ipv6"
+  fi
+fi
+
+if [ -n "$pids_to_show" ]; then
+  ps -p "$pids_to_show" -o pid,stime,tty,etime,command 2>/dev/null || echo "Process details unavailable"
+else
+  echo "Port $1 is not in use"
+fi
